@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { View, FlatList, StyleSheet, SafeAreaView, Text } from 'react-native';
+import { View, FlatList, StyleSheet, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch, useSelector } from 'react-redux';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { COLORS, SPACING, TYPOGRAPHY } from '../../constants/theme';
