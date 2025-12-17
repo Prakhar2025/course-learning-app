@@ -66,7 +66,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
     const renderItem = ({ item }: { item: Course }) => (
         <CourseCard
             course={item}
-            onPress={() => console.log('Course pressed:', item.id)}
+            onPress={() => navigation.navigate('CourseDetails', { course: item })}
         />
     );
 

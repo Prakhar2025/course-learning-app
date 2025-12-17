@@ -14,8 +14,8 @@ interface LoginScreenProps {
 }
 
 export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('test@test.com');
+    const [password, setPassword] = useState('password');
     const dispatch = useDispatch();
     const { loading } = useSelector((state: RootState) => state.auth);
 
@@ -58,6 +58,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
             <View style={styles.content}>
                 <Text style={[styles.title, TYPOGRAPHY.h1]}>Welcome Back!</Text>
                 <Text style={[styles.subtitle, TYPOGRAPHY.body]}>Sign in to continue learning</Text>
+                <Text style={{ color: COLORS.primary, marginBottom: SPACING.m }}>Demo Account Pre-filled</Text>
 
                 <Input
                     label="Email"
@@ -76,10 +77,18 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
                     secureTextEntry
                 />
 
+                <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')} style={{ alignSelf: 'flex-end', marginBottom: SPACING.m }}>
+                    <Text style={{ color: COLORS.primary, fontSize: 14 }}>Forgot Password?</Text>
+                </TouchableOpacity>
+
                 <Button title="Login" onPress={handleLogin} loading={loading} />
 
                 <TouchableOpacity onPress={() => navigation.navigate('Register')} style={styles.linkContainer}>
                     <Text style={styles.linkText}>Don't have an account? Sign up</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => navigation.navigate('AdminLogin')} style={{ marginTop: SPACING.l, alignItems: 'center' }}>
+                    <Text style={{ color: COLORS.textSecondary, fontSize: 12 }}>Admin Portal</Text>
                 </TouchableOpacity>
             </View>
         </SafeAreaView>

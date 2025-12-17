@@ -7,7 +7,7 @@ import { Button } from '../../components/Button';
 import { logout } from '../../store/authSlice';
 import { RootState } from '../../store';
 
-export const ProfileScreen = () => {
+export const ProfileScreen = (props: any) => {
     const dispatch = useDispatch();
     const { user } = useSelector((state: RootState) => state.auth);
 
@@ -26,6 +26,34 @@ export const ProfileScreen = () => {
                     <Text style={styles.label}>Role:</Text>
                     <Text style={styles.value}>{user?.role || 'user'}</Text>
                 </View>
+
+                <Button
+                    title="Edit Profile"
+                    onPress={() => (props.navigation as any).navigate('EditProfile')}
+                    variant="secondary"
+                    style={{ marginBottom: SPACING.s }}
+                />
+
+                <Button
+                    title="Change Password"
+                    onPress={() => (props.navigation as any).navigate('ChangePassword')}
+                    variant="outline"
+                    style={{ marginBottom: SPACING.m }}
+                />
+
+                <Button
+                    title="Subscription Plans"
+                    onPress={() => (props.navigation as any).navigate('Subscription')}
+                    variant="primary"
+                    style={{ marginBottom: SPACING.s, marginTop: SPACING.m }}
+                />
+
+                <Button
+                    title="Contact Support"
+                    onPress={() => (props.navigation as any).navigate('Support')}
+                    variant="outline"
+                    style={{ marginBottom: SPACING.m }}
+                />
 
                 <Button
                     title="Logout"

@@ -1,5 +1,4 @@
-import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, ActivityIndicator, StyleProp, ViewStyle } from 'react-native';
 import { COLORS, SPACING } from '../constants/theme';
 
 interface ButtonProps {
@@ -8,6 +7,7 @@ interface ButtonProps {
     variant?: 'primary' | 'secondary' | 'outline';
     loading?: boolean;
     disabled?: boolean;
+    style?: StyleProp<ViewStyle>;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -16,6 +16,7 @@ export const Button: React.FC<ButtonProps> = ({
     variant = 'primary',
     loading = false,
     disabled = false,
+    style,
 }) => {
     const getBackgroundColor = () => {
         if (disabled) return COLORS.textSecondary;
@@ -38,6 +39,7 @@ export const Button: React.FC<ButtonProps> = ({
                     borderWidth: variant === 'outline' ? 1 : 0,
                     borderColor: COLORS.primary,
                 },
+                style,
             ]}
             onPress={onPress}
             disabled={disabled || loading}
